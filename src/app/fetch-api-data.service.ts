@@ -40,35 +40,73 @@ export class apiService {
       .pipe(catchError(this.handleError));
   }
 
-  // // Making the api call for the get all movies endpoint
-  // getAllMovies(): Observable<any> {}
+  // Making the api call for the get all movies endpoint
+  getAllMovies(): Observable<any> {
+    return this.http.get(apiUrl + 'movies').pipe(catchError(this.handleError));
+  }
 
-  // // Making the api call for the get one movie endpoint
-  // getOneMovie(title: string): Observable<any> {}
+  // Making the api call for the get one movie endpoint
+  getOneMovie(title: string): Observable<any> {
+    return this.http
+      .get(apiUrl + 'movies/' + title)
+      .pipe(catchError(this.handleError));
+  }
 
-  // // Making the api call for the get one director endpoint
-  // getDirector(directorName: string): Observable<any> {}
+  // Making the api call for the get one director endpoint
+  getDirector(directorName: string): Observable<any> {
+    return this.http
+      .get(apiUrl + 'movies/director/' + directorName)
+      .pipe(catchError(this.handleError));
+  }
 
-  // // Making the api call for the get one genre endpoint
-  // getGenre(genreName: string): Observable<any> {}
+  // Making the api call for the get one genre endpoint
+  getGenre(genreName: string): Observable<any> {
+    return this.http
+      .get(apiUrl + 'movies/genre/' + genreName)
+      .pipe(catchError(this.handleError));
+  }
 
-  // // Making the api call for the get one user endpoint
-  // getUser(): Observable<any> {}
+  // Making the api call for the get one user endpoint
+  getUser(userName: string): Observable<any> {
+    return this.http
+      .get(apiUrl + 'users/' + userName)
+      .pipe(catchError(this.handleError));
+  }
 
-  // // Making the api call for the get favourite movies for a user endpoint
-  // getFavoriteMovies(): Observable<any> {}
+  // Making the api call for the get favourite movies for a user endpoint
+  getFavoriteMovies(userName: string): Observable<any> {
+    return this.http
+      .get(apiUrl + 'users/' + userName)
+      .pipe(catchError(this.handleError));
+  }
 
-  // // Making the api call for the add a movie to favourite Movies endpoint
-  // addFavoriteMovie(movieId: string): Observable<any> {}
+  // Making the api call for the add a movie to favourite Movies endpoint
+  addFavoriteMovie(userName: string, movieId: string): Observable<any> {
+    return this.http
+      .post(apiUrl + 'users/favorites/' + userName + '/' + movieId, null)
+      .pipe(catchError(this.handleError));
+  }
 
-  // // Making the api call for the edit user endpoint
-  // editUser(updatedUser: any): Observable<any> {}
+  // Making the api call for the edit user endpoint
+  editUser(updatedUser: string): Observable<any> {
+    return this.http
+      .put(apiUrl + 'users/' + updatedUser, updatedUser)
+      .pipe(catchError(this.handleError));
+  }
 
-  // // Making the api call for the delete user endpoint
-  // deleteUser(): Observable<any> {}
+  // Making the api call for the delete user endpoint
+  deleteUser(userName: string): Observable<any> {
+    return this.http
+      .delete(apiUrl + 'users/' + userName)
+      .pipe(catchError(this.handleError));
+  }
 
-  // // Making the api call for the elete a movie from the favorite movies endpoint
-  // deleteFavoriteMovie(movieId: string): Observable<any> {}
+  // Making the api call for the elete a movie from the favorite movies endpoint
+  deleteFavoriteMovie(userName: string, movieId: string): Observable<any> {
+    return this.http
+      .post(apiUrl + 'users/favorites/' + userName + '/' + movieId, null)
+      .pipe(catchError(this.handleError));
+  }
 
   private handleError(error: HttpErrorResponse): any {
     if (error.error instanceof ErrorEvent) {
