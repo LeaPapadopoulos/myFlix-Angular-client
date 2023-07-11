@@ -29,7 +29,14 @@ export class apiService {
   public userLogin(userDetails: any): Observable<any> {
     console.log(userDetails);
     return this.http
-      .post(apiUrl + 'login', userDetails)
+      .post(
+        apiUrl +
+          'login?username=' +
+          userDetails.Username +
+          '&password=' +
+          userDetails.Password,
+        null
+      )
       .pipe(catchError(this.handleError));
   }
 
