@@ -11,8 +11,9 @@ import { NavigationBarComponent } from '../navigation-bar/navigation-bar.compone
   templateUrl: './movie-card.component.html',
   styleUrls: ['./movie-card.component.css'],
 })
-export class MovieCardComponent {
+export class MovieCardComponent implements OnInit {
   movies: any[] = [];
+
   constructor(
     public fetchApiData: apiService,
     public dialog: MatDialog,
@@ -25,7 +26,7 @@ export class MovieCardComponent {
 
     const token = localStorage.getItem('token');
     if (!token) {
-      // Redirect to movies page if a valid token exists
+      // Redirect to welcome page if a valid token doesn't exist
       this.router.navigate(['/welcome']);
     }
   }
@@ -34,7 +35,6 @@ export class MovieCardComponent {
     this.fetchApiData.getAllMovies().subscribe((resp: any) => {
       this.movies = resp;
       console.log(this.movies);
-      return this.movies;
     });
   }
 
@@ -70,19 +70,33 @@ export class MovieCardComponent {
       this.snackBar.open('Movie added to favorites.', 'OK', {
         duration: 2000,
       });
+      this.updateFavoriteMovies(id, true); // Update the favorite movies in localStorage
     });
   }
 
   removeFromFavorite(id: string): void {
     this.fetchApiData.deleteFavoriteMovie(id).subscribe((result) => {
-      this.snackBar.open('Movie removed to favorites.', 'OK', {
+      this.snackBar.open('Movie removed from favorites.', 'OK', {
         duration: 2000,
       });
+      this.updateFavoriteMovies(id, false); // Update the favorite movies in localStorage
     });
+  }
+
+  private updateFavoriteMovies(movieId: string, addToFavorites: boolean): void {
+    const user = JSON.parse(localStorage.getItem('user') || '{}');
+    if (addToFavorites) {
+      user.FavoriteMovies.push(movieId);
+    } else {
+      user.FavoriteMovies = user.FavoriteMovies.filter(
+        (id: string) => id !== movieId
+      );
+    }
+    localStorage.setItem('user', JSON.stringify(user));
   }
 
   isFavorite(movieId: string): boolean {
     const user = JSON.parse(localStorage.getItem('user') || '{}');
-    return user.FavoriteMovies.indexOf(movieId) >= 0;
+    return user.FavoriteMovies && user.FavoriteMovies.includes(movieId);
   }
 }
