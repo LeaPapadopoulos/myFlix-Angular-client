@@ -20,6 +20,7 @@ import { WelcomePageComponent } from './welcome-page/welcome-page.component';
 import { MatIconModule } from '@angular/material/icon';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { UserProfileEditComponent } from './user-profile-edit/user-profile-edit.component';
+import { MovieDetailsComponent } from './movie-details/movie-details.component';
 
 const appRoutes: Routes = [
   { path: 'welcome', component: WelcomePageComponent },
@@ -37,6 +38,7 @@ const appRoutes: Routes = [
     WelcomePageComponent,
     UserProfileComponent,
     UserProfileEditComponent,
+    MovieDetailsComponent,
   ],
   imports: [
     HttpClientModule,

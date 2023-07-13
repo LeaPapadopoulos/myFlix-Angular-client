@@ -89,9 +89,21 @@ export class apiService {
   }
 
   // Making the api call for the add a movie to favourite Movies endpoint
-  addFavoriteMovie(userName: string, movieId: string): Observable<any> {
+  addFavoriteMovie(movieId: string): Observable<any> {
+    const token = localStorage.getItem('token');
+    const userName = JSON.parse(localStorage.getItem('user') || '{}');
+
     return this.http
-      .post(apiUrl + 'users/favorites/' + userName + '/' + movieId, null)
+      .post(
+        apiUrl + 'users/favorites/' + userName.username + '/' + movieId,
+        {},
+        {
+          headers: new HttpHeaders({
+            Authorization: 'Bearer ' + token,
+          }),
+          responseType: 'text',
+        }
+      )
       .pipe(catchError(this.handleError));
   }
 
@@ -110,9 +122,17 @@ export class apiService {
   }
 
   // Making the api call for the elete a movie from the favorite movies endpoint
-  deleteFavoriteMovie(userName: string, movieId: string): Observable<any> {
+  deleteFavoriteMovie(movieId: string): Observable<any> {
+    const token = localStorage.getItem('token');
+    const userName = JSON.parse(localStorage.getItem('user') || '{}');
+
     return this.http
-      .post(apiUrl + 'users/favorites/' + userName + '/' + movieId, null)
+      .delete(apiUrl + 'users/favorites/' + userName.username + '/' + movieId, {
+        headers: new HttpHeaders({
+          Authorization: 'Bearer ' + token,
+        }),
+        responseType: 'text',
+      })
       .pipe(catchError(this.handleError));
   }
 
