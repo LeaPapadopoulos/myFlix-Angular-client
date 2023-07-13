@@ -1,22 +1,28 @@
 import { Component, OnInit, Input } from '@angular/core';
-
-// This import is used to close the dialog on success
 import { MatDialogRef } from '@angular/material/dialog';
-
-// This import brings in the API calls we created in 6.2
 import { apiService } from '../fetch-api-data.service';
-
-// This import is used to display notifications back to the user
 import { MatSnackBar } from '@angular/material/snack-bar';
 
+/**
+ * Component representing the user profile edit form.
+ */
 @Component({
   selector: 'app-user-profile-edit',
   templateUrl: './user-profile-edit.component.html',
   styleUrls: ['./user-profile-edit.component.css'],
 })
 export class UserProfileEditComponent implements OnInit {
+  /**
+   * Input data for user profile edit.
+   */
   @Input() userData = { Username: '', Password: '', Email: '', Birthday: '' };
 
+  /**
+   * Constructs the UserProfileEditComponent.
+   * @param fetchApiData - The API service for making requests to the backend.
+   * @param dialogRef - Reference to the dialog component.
+   * @param snackBar - The notification service for displaying messages.
+   */
   constructor(
     public fetchApiData: apiService,
     public dialogRef: MatDialogRef<UserProfileEditComponent>,
@@ -25,7 +31,9 @@ export class UserProfileEditComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  // This is the function responsible for sending the form inputs to the backend
+  /**
+   * Updates the user profile by sending the form inputs to the backend.
+   */
   updateUserProfile(): void {
     this.fetchApiData.editUser(this.userData.Username, this.userData).subscribe(
       (response) => {

@@ -1,22 +1,31 @@
 import { Component, OnInit } from '@angular/core';
 import { apiService } from '../fetch-api-data.service';
 import { UserProfileEditComponent } from '../user-profile-edit/user-profile-edit.component';
-import { NavigationBarComponent } from '../navigation-bar/navigation-bar.component';
-
-// User notification
 import { MatSnackBar } from '@angular/material/snack-bar';
-
 import { MatDialog } from '@angular/material/dialog';
-
 import { Router } from '@angular/router';
 
+/**
+ * Component representing the user profile page.
+ */
 @Component({
   selector: 'app-user-profile',
   templateUrl: './user-profile.component.html',
   styleUrls: ['./user-profile.component.css'],
 })
 export class UserProfileComponent {
+  /**
+   * Object representing the user profile.
+   */
   users: any = {};
+
+  /**
+   * Constructs the UserProfileComponent.
+   * @param fetchApiData - The API service for making requests to the backend.
+   * @param snackBar - The notification service for displaying messages.
+   * @param dialog - The dialog service for displaying the user profile edit form.
+   * @param router - The router service for navigating to different routes.
+   */
   constructor(
     public fetchApiData: apiService,
     public snackBar: MatSnackBar,
@@ -34,7 +43,9 @@ export class UserProfileComponent {
     }
   }
 
-  // Call to get user profile
+  /**
+   * Retrieves the user profile from the backend.
+   */
   getUserProfile(): void {
     const user = JSON.parse(localStorage.getItem('user') || '{}');
 
@@ -49,6 +60,9 @@ export class UserProfileComponent {
     );
   }
 
+  /**
+   * Opens the user profile edit dialog.
+   */
   openUserProfileEdit(): void {
     this.dialog.open(UserProfileEditComponent, {
       width: '280px',

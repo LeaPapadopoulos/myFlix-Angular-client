@@ -1,3 +1,6 @@
+/**
+ * The root module of the Angular application.
+ */
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
@@ -24,6 +27,9 @@ import { MovieDetailsComponent } from './movie-details/movie-details.component';
 import { NavigationBarComponent } from './navigation-bar/navigation-bar.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 
+/**
+ * Defines the routes of the application.
+ */
 const appRoutes: Routes = [
   { path: 'welcome', component: WelcomePageComponent },
   { path: 'movies', component: MovieCardComponent },
@@ -31,6 +37,9 @@ const appRoutes: Routes = [
   { path: '', redirectTo: 'welcome', pathMatch: 'prefix' },
 ];
 
+/**
+ * The root module for the Angular application.
+ */
 @NgModule({
   declarations: [
     AppComponent,
