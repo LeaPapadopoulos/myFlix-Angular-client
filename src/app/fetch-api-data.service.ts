@@ -67,9 +67,18 @@ export class apiService {
   }
 
   // Making the api call for the get one user endpoint
-  getUser(): Observable<any> {
-    const user = JSON.parse(localStorage.getItem('user') || '{}');
-    return user;
+  getUser(userName: string): Observable<any> {
+    console.log(userName);
+    const token = localStorage.getItem('token');
+    console.log(token);
+
+    return this.http
+      .get(apiUrl + 'users/' + userName, {
+        headers: new HttpHeaders({
+          Authorization: 'Bearer ' + token,
+        }),
+      })
+      .pipe(catchError(this.handleError));
   }
 
   // Making the api call for the get favourite movies for a user endpoint
@@ -87,9 +96,9 @@ export class apiService {
   }
 
   // Making the api call for the edit user endpoint
-  editUser(updatedUser: string): Observable<any> {
+  editUser(user: string, updatedUser: any): Observable<any> {
     return this.http
-      .put(apiUrl + 'users/' + updatedUser, updatedUser)
+      .put(apiUrl + 'users/' + user, updatedUser)
       .pipe(catchError(this.handleError));
   }
 
