@@ -21,6 +21,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { UserProfileEditComponent } from './user-profile-edit/user-profile-edit.component';
 import { MovieDetailsComponent } from './movie-details/movie-details.component';
+import { NavigationBarComponent } from './navigation-bar/navigation-bar.component';
+import { MatToolbarModule } from '@angular/material/toolbar';
 
 const appRoutes: Routes = [
   { path: 'welcome', component: WelcomePageComponent },
@@ -39,6 +41,7 @@ const appRoutes: Routes = [
     UserProfileComponent,
     UserProfileEditComponent,
     MovieDetailsComponent,
+    NavigationBarComponent,
   ],
   imports: [
     HttpClientModule,
@@ -54,6 +57,7 @@ const appRoutes: Routes = [
     FormsModule,
     RouterModule.forRoot(appRoutes),
     MatIconModule,
+    MatToolbarModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -1,0 +1,36 @@
+.navbar {
+  background-color: rgb(235, 235, 235);
+}
+
+.left-section {
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+.app-name {
+  color: rgb(0, 0, 0);
+  font-weight: bold;
+  font-size: 20px;
+  text-decoration: none;
+  padding: 10px;
+}
+
+.right-section {
+  display: flex;
+  align-items: center;
+}
+
+.avatar-link {
+  margin-right: 10px;
+  text-decoration: none;
+}
+
+.avatar {
+  font-size: 32px;
+  color: white;
+}
+
+.logout-button {
+  color: white;
+}

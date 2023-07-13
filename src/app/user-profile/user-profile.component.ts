@@ -1,11 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { apiService } from '../fetch-api-data.service';
 import { UserProfileEditComponent } from '../user-profile-edit/user-profile-edit.component';
+import { NavigationBarComponent } from '../navigation-bar/navigation-bar.component';
 
 // User notification
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 import { MatDialog } from '@angular/material/dialog';
+
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-profile',
@@ -17,11 +20,18 @@ export class UserProfileComponent {
   constructor(
     public fetchApiData: apiService,
     public snackBar: MatSnackBar,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
     this.getUserProfile();
+
+    const token = localStorage.getItem('token');
+    if (!token) {
+      // Redirect to movies page if a valid token exists
+      this.router.navigate(['/welcome']);
+    }
   }
 
   // Call to get user profile

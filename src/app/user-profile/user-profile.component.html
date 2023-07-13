@@ -1,3 +1,4 @@
+<app-navigation-bar></app-navigation-bar>
 <div style="display: flex; flex-wrap: wrap; width: 100%; overflow: auto">
   <mat-card style="flex: 1 1 auto; margin: 1rem">
     <mat-card-header>
@@ -7,11 +8,7 @@
       <mat-card-subtitle>Birthday: {{ users.Birthday }}</mat-card-subtitle>
     </mat-card-header>
     <mat-card-actions>
-      <button
-        mat-raised-button
-        (click)="openUserProfileEdit()"
-        color="basic"
-      >
+      <button mat-raised-button (click)="openUserProfileEdit()" color="basic">
         Edit
       </button>
     </mat-card-actions>

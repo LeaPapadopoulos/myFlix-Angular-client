@@ -3,6 +3,8 @@ import { apiService } from '../fetch-api-data.service';
 import { MatDialog } from '@angular/material/dialog';
 import { MovieDetailsComponent } from '../movie-details/movie-details.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
+import { NavigationBarComponent } from '../navigation-bar/navigation-bar.component';
 
 @Component({
   selector: 'app-movie-card',
@@ -14,11 +16,18 @@ export class MovieCardComponent {
   constructor(
     public fetchApiData: apiService,
     public dialog: MatDialog,
-    public snackBar: MatSnackBar
+    public snackBar: MatSnackBar,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
     this.getMovies();
+
+    const token = localStorage.getItem('token');
+    if (!token) {
+      // Redirect to movies page if a valid token exists
+      this.router.navigate(['/welcome']);
+    }
   }
 
   getMovies(): void {

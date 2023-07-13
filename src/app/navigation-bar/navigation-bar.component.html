@@ -1,0 +1,18 @@
+<mat-toolbar color="primary" class="navbar">
+  <div class="left-section">
+    <a routerLink="/movies" class="app-name">MyMovieApp</a>
+  </div>
+  <div class="right-section">
+    <a routerLink="/user" class="avatar-link">
+      <mat-icon class="avatar">account_circle</mat-icon>
+    </a>
+    <button
+      mat-button
+      color="primary"
+      class="logout-button"
+      (click)="logoutUser()"
+    >
+      Logout
+    </button>
+  </div>
+</mat-toolbar>
