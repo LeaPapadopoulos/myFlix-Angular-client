@@ -67,10 +67,9 @@ export class apiService {
   }
 
   // Making the api call for the get one user endpoint
-  getUser(userName: string): Observable<any> {
-    return this.http
-      .get(apiUrl + 'users/' + userName)
-      .pipe(catchError(this.handleError));
+  getUser(): Observable<any> {
+    const user = JSON.parse(localStorage.getItem('user') || '{}');
+    return user;
   }
 
   // Making the api call for the get favourite movies for a user endpoint
