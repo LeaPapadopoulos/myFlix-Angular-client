@@ -1,6 +1,6 @@
 # MyFlixAngularClient
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.1.4.
+This is the fronend app for the movie-api build using Angular. This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.1.4.
 
 ## Development server
 
@@ -14,14 +14,56 @@ Run `ng generate component component-name` to generate a new component. You can 
 
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
 
-## Running unit tests
+## API Service
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+The `apiService` class is used for making API calls to the backend. It provides methods for user registration, user login, retrieving movies, retrieving user information, adding favorite movies, and more.
 
-## Running end-to-end tests
+## Dependencies
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+The following dependencies are required to run the application:
 
-## Further help
+- @angular/animations
+- @angular/cdk
+- @angular/common
+- @angular/compiler
+- @angular/core
+- @angular/forms
+- @angular/material
+- @angular/platform-browser
+- @angular/platform-browser-dynamic
+- @angular/router
+- rxjs
+- tslib
+- zone.js
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+## Development Dependencies
+
+The following development dependencies are required for testing and building the application:
+
+- @angular-devkit/build-angular
+- @angular/cli
+- @angular/compiler-cli
+- @types/jasmine
+- angular-cli-ghpages
+- jasmine-core
+- karma
+- karma-chrome-launcher
+- karma-coverage
+- karma-jasmine
+- karma-jasmine-html-reporter
+- typedoc
+- typescript
+
+## Development
+
+To contribute to the development of the application, follow these steps:
+
+1. Fork the repository.
+2. Create a new branch.
+3. Make your changes and commit them.
+4. Push your changes to your forked repository.
+5. Submit a pull request.
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.
