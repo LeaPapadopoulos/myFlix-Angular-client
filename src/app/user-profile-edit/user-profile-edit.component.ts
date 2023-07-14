@@ -15,7 +15,7 @@ export class UserProfileEditComponent implements OnInit {
   /**
    * Input data for user profile edit.
    */
-  @Input() userData = { Username: '', Password: '', Email: '', Birthday: '' };
+  @Input() userData = { Username: '', Password: '', Email: '', Birth: '' };
 
   /**
    * Constructs the UserProfileEditComponent.
@@ -35,7 +35,11 @@ export class UserProfileEditComponent implements OnInit {
    * Updates the user profile by sending the form inputs to the backend.
    */
   updateUserProfile(): void {
-    this.fetchApiData.editUser(this.userData.Username, this.userData).subscribe(
+    const oldUserUserName = JSON.parse(
+      localStorage.getItem('user') || '{}'
+    ).username;
+
+    this.fetchApiData.editUser(oldUserUserName, this.userData).subscribe(
       (response) => {
         // Logic for a successful user registration goes here! (To be implemented)
         console.log(response);
@@ -44,6 +48,8 @@ export class UserProfileEditComponent implements OnInit {
           duration: 2000,
         });
         localStorage.setItem('user', JSON.stringify(response)); //update user data
+
+        window.location.reload(); // reload page with new data
       },
       (response) => {
         console.log(response);
