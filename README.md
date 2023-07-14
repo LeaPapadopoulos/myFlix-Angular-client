@@ -2,6 +2,16 @@
 
 This is the fronend app for the movie-api build using Angular. This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.1.4.
 
+## Demo App
+
+You can test the app under this [url](https://leapapadopoulos.github.io/myFlix-Angular-client/)
+
+## App Screenshots
+
+![Movie View](image.png)
+![Movie Details](image-1.png)
+![Profile View](image-2.png)
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
