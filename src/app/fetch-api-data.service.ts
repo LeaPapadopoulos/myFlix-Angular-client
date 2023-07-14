@@ -43,14 +43,10 @@ export class apiService {
   public userLogin(userDetails: any): Observable<any> {
     console.log(userDetails);
     return this.http
-      .post(
-        apiUrl +
-          'login?username=' +
-          userDetails.Username +
-          '&password=' +
-          userDetails.Password,
-        null
-      )
+      .post(apiUrl + 'login', {
+        username: userDetails.Username,
+        password: userDetails.Password,
+      })
       .pipe(catchError(this.handleError));
   }
 
